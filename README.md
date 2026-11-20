@@ -2,8 +2,6 @@
 
 A community activation site where visitors enter their X handle, see a live card preview, generate a personalised Entropy Community Pass, download it as a PNG, and share it on X. No wallet, email or login is needed.
 
-Built with [Arc Studio](https://studio.arc.io)
-
 ## Tech stack
 
 React, Vite, TypeScript, Tailwind CSS, Framer Motion, `qrcode` and `html-to-image`.
