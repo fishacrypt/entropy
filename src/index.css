@@ -1,0 +1,93 @@
+@import '@fontsource/outfit/latin-400.css';
+@import '@fontsource/outfit/latin-500.css';
+@import '@fontsource/outfit/latin-600.css';
+@import '@fontsource/outfit/latin-700.css';
+@import '@fontsource/ibm-plex-mono/latin-400.css';
+@import '@fontsource/ibm-plex-mono/latin-500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #080808;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: #080808;
+  color: #f8f8f6;
+  font-family: 'Outfit', ui-sans-serif, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #e4b84d;
+  color: #080808;
+}
+
+/* Falling light streaks, inspired by the Entropy site atmosphere */
+@keyframes streak-fall {
+  0% {
+    transform: translateY(-40%);
+    opacity: 0;
+  }
+  15% {
+    opacity: var(--streak-o, 0.5);
+  }
+  85% {
+    opacity: var(--streak-o, 0.5);
+  }
+  100% {
+    transform: translateY(140%);
+    opacity: 0;
+  }
+}
+
+.streak {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.55), transparent);
+  animation: streak-fall var(--streak-d, 14s) linear infinite;
+  animation-delay: var(--streak-delay, 0s);
+  opacity: 0;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .streak {
+    animation: none;
+    opacity: 0.18;
+  }
+}
+
+/* Recolour an official SVG mark with the surrounding text colour */
+.entropy-official-mark * {
+  fill: currentColor !important;
+  stroke: none !important;
+}
